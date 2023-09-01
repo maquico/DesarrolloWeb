@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 03</title>
+</head>
+<body>
+    <h1>Solicitante Information</h1>
+    <form id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
+        <label for="tipodocumento">Tipo Documento:</label><br>
+        <input type="number" name="tipodocumento" required><br><br>
+        
+        <label for="nombres">Nombres:</label><br>
+        <input type="text" name="nombres" required><br><br>
+        
+        <label for="fechanacimiento">Fecha de Nacimiento:</label><br>
+        <input type="date" name="fechanacimiento" required><br><br>
+        
+        <label for="sexo">Sexo:</label><br>
+        <input type="text" name="sexo" required><br><br>
+        
+        <label for="ocupacion">Ocupación:</label><br>
+        <input type="text" name="ocupacion" required><br><br>
+        
+        <label for="salario">Salario:</label><br>
+        <input type="number" step="0.01" name="salario" required><br><br>
+        
+        <label for="casa_propia">Casa Propia:</label><br>
+        <input type="text" name="casa_propia" required><br><br>
+        
+        <label for="vehiculo">Vehículo:</label><br>
+        <input type="text" name="vehiculo" required><br><br>
+        
+        <label for="estado">Estado:</label><br>
+        <input type="text" name="estado" required><br><br>
+        
+        <label for="lugar_trabajo">Lugar de Trabajo:</label><br>
+        <input type="text" name="lugar_trabajo" required><br><br>
+        
+        <label for="nivel_academico">Nivel Académico:</label><br>
+        <input type="text" name="nivel_academico" required><br><br>
+
+        <label for="foto">Foto:</label><br>
+        <input type="file" name="files" onchange="previewImage(event)" accept="image/*" required><br>
+        <img id="preview" src="#" alt="Selected Image" style="max-width: 100%; max-height: 200px;"><br><br>
+        <textarea id="faceDetectionResult" rows="5" cols="50" readonly></textarea><br><br>
+        
+        <button type="submit">Upload Files</button>
+    </form>
+    
+
+</body>
+
+<!-- ... your other script imports ... -->
+
+<!-- ... your other script imports ... -->
+
+<script>
+    function previewImage(event) {
+        const input = event.target;
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = async function (e) {
+                const previewElement = document.getElementById('preview');
+                previewElement.src = e.target.result;
+                
+                // Call the server to get face detection result
+                getFaceDetectionResult(input.files[0])
+                    .then(faceDetectionResult => {
+                        const faceDetectionResultTextArea = document.getElementById('faceDetectionResult');
+                        if (faceDetectionResult) {
+                            faceDetectionResultTextArea.value = JSON.stringify(faceDetectionResult, null, 2);
+                        } else {
+                            faceDetectionResultTextArea.value = 'No face detected or error occurred.';
+                        }
+                    })
+                    .catch(error => {
+                        const faceDetectionResultTextArea = document.getElementById('faceDetectionResult');
+                        faceDetectionResultTextArea.value = 'An error occurred while fetching the result.';
+                        console.error('Error:', error);
+                    });
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    // Function to call the server for face detection result
+    async function getFaceDetectionResult(file) {
+    const formData = new FormData();
+    formData.append('files', file);
+
+    try {
+        const response = await fetch('/upload', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (!response.ok) {
+            throw new Error(`Request failed with status ${response.status}`);
+        }
+
+        const data = await response.json();
+        return data.faceDetection;
+    } catch (error) {
+        console.error('Fetch error:', error);
+        throw error;
+    }
+}
+</script>
+
+
+</html>
+
+
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultar Padrón JCE</title>
+</head>
+<body>
+    <h1>Consultando Padrón</h1>
+    <form id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
+        
+        <label for="foto">Foto:</label><br>
+        <input type="file" name="files" accept="image/*" required><br>
+        <img id="preview" src="#" alt="Selected Image" style="max-width: 100%; max-height: 200px;"><br><br>
+        
+        <button type="submit">Upload Files</button>
+    </form>
+
+    <h2>Detected Text:</h2>
+    <ul id="detected-text"></ul>
+
+</body>
+
+<script>
+    document.getElementById('upload-form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(event.target);
+
+        try {
+            const response = await fetch('/upload', {
+                method: 'POST',
+                body: formData
+            });
+
+            const extractedNumbers = await response.json();
+            const detectedTextList = document.getElementById('detected-text');
+            detectedTextList.innerHTML = ''; // Clear previous results
+            
+            extractedNumbers.forEach(number => {
+                const listItem = document.createElement('li');
+                listItem.textContent = number;
+                detectedTextList.appendChild(listItem);
+            });
+        } catch (error) {
+            console.error(error);
+        }
+    });
+</script>
+
+</html>

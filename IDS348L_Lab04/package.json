@@ -1,0 +1,22 @@
+{
+  "name": "ids348_lab04",
+  "version": "1.0.0",
+  "description": "Laboratorio 04 Desarrollo de Aplicaciones Web",
+  "main": "app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon --watch src src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1445.0",
+    "axios": "^1.4.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.6.0",
+    "nodemon": "^3.0.1"
+  }
+}

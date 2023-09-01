@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Form de registro</h1>
+    <form action="/registrar" method="post">
+        <label for="tipoDocumento">Tipo de Documento:</label><br>
+        <input type="number" id="tipoDocumento" name="tipoDocumento" required><br><br>
+    
+        <label for="documento">Documento:</label><br>
+        <input type="text" id="documento" name="documento" required><br><br>
+    
+        <label for="nombres">Nombres:</label><br>
+        <input type="text" id="nombres" name="nombres" required><br><br>
+        
+        <label for="apellidos">Apellidos:</label><br>
+        <input type="text" id="apellidos" name="apellidos" required><br><br>
+    
+        <label for="fechaNacimiento">Fecha de Nacimiento:</label><br>
+        <input type="date" id="fechaNacimiento" name="fechaNacimiento" required><br><br>
+    
+        <label for="notaMedica">Nota Médica:</label><br>
+        <input type="text" id="notaMedica" name="notaMedica" required><br><br>
+    
+        <label for="montoPagado">Monto Pagado:</label><br>
+        <input type="number" step="0.01" id="montoPagado" name="montoPagado" required><br><br>
+    
+        <input type="submit" value="Register">
+    </form>
+</body>
+</html>
