@@ -1,0 +1,13 @@
+{
+    "store": {
+      "provider": "fs"
+    },
+    "templatingEngines": {
+      "strategy": "in-process"
+    },
+    "extensions": {
+      "chrome-pdf": {
+        "enabled": true
+      }
+    }
+  }

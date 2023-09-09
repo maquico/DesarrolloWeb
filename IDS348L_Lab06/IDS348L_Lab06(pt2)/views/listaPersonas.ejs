@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Personas Registradas</title>
+</head>
+<body>
+    <h1>Lista de Personas Registradas</h1>
+    <ul>
+        <% personas.forEach((persona) => { %>
+            <li><%= persona.Nombres %> <%= persona.Apellidos %> - <%= persona.VaAllevar %></li>
+        <% }); %>
+    </ul>
+    <a href="/agregar">Agregar Persona</a>
+</body>
+</html>

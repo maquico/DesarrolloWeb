@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action = '/donantes.html' method="GET">
+
+        <label for="tipoDocumento">Tipo Documento:</label><br>
+        <input type="text" name="tipoDocumento" id="tipoDocumento"><br> <br>
+
+        <label for="ced">Serie:</label><br>
+        <input type="text" name="ced" id="serie"><br> <br>
+
+        <label for="serie">Cedula:</label><br>
+        <input type="text" name="serie" id="cedula"><br> <br>
+
+        <label for="digitoVerificador">Digito Verificador:</label><br>
+        <input type="text" name="digitoVerificador" id="digitoVerificador"><br> <br>
+
+        <label for="peso">Peso:</label><br>
+        <input type="text" name="peso" id="peso"><br> <br>
+
+        <label for="peso">Tipo de Sangre:</label><br>
+        <input type="text" name="tipoSangre" id="tipoSangre"><br> <br>
+
+        <label for="peso">Fecha Ultimo consumo de alcohol:</label><br>
+        <input type="date" name="ultimoAlcohol" id="ultimoAlcohol"><br> <br>
+
+        <input type="submit" value="Enviar">
+
+    </form>
+
+    <form action="/report_all">
+        <button action="/report_all" id="generateReportButton">Generar Reporte</button> 
+    </form>
+
+</body>
+</html>
