@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <% if (novias) { %>
+        <% if (novias.length > 0) { %>
+        <h2>Resultados:</h2>
+        <table>
+            <tr>
+                <th>Nombre</th>
+            </tr>
+            <% novias.forEach(function(novia) { %>
+            <tr>
+                <td><%= novia.nombres %></td>
+            </tr>
+            <% }); %>
+        </table>
+        <% } else { %>
+        <p>No se encontraron resultados.</p>
+        <% } %>
+        <% } %>
+</body>
+</html>

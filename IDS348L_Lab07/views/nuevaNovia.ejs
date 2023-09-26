@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registrar novia</title>
+</head>
+<body>
+    <h1>Registrar una nueva novia</h1>
+    <form action="/crearNovia" method="POST">
+        <label for="nombres">Nombres:</label>
+        <input type="text" id="nombres" name="nombres" required><br><br>
+
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" name="apellidos" required><br><br>
+
+        <label for="telefono">Telefono:</label>
+        <input type="text" id="telefono" name="telefono" required><br><br>
+
+        <label for="direccion">Direccion:</label>
+        <input type="text" id="direccion" name="direccion" required><br><br>
+
+        <input type="submit" value="Registrar">
+    </form>
+    
+    <br>
+    <br>
+
+    <!-- SEND TO busquedaNovia.ejs WITH A BUTTON THAT CALLS A METHOD -->
+    <form action="/busquedaNovia" method="GET">
+        <input type="submit" value="Buscar novia">
+    </form>
+
+</body>
+</html>
