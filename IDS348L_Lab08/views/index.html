@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert Supplier</title>
+</head>
+<body>
+    <h1>Insert Supplier</h1>
+    <form method= "POST" action="/insertSupplier" id="insertForm">
+        <label for="SupplierName">Supplier Name:</label><br><br>
+        <input type="text" id="SupplierName" name="SupplierName" required><br><br>
+        
+        <label for="ContactName">Contact Name:</label><br><br>
+        <input type="text" id="ContactName" name="ContactName" required><br><br>
+        
+        <label for="Address">Address:</label><br><br>
+        <input type="text" id="Address" name="Address" required><br><br>
+        
+        <label for="City">City:</label><br><br>
+        <input type="text" id="City" name="City" required><br><br>
+        
+        <label for="PostalCode">Postal Code:</label><br><br>
+        <input type="text" id="PostalCode" name="PostalCode"><br><br>
+        
+        <label for="Country">Country:</label><br><br>
+        <input type="text" id="Country" name="Country"><br><br>
+        
+        <label for="Phone">Phone:</label><br><br>
+        <input type="text" id="Phone" name="Phone"><br><br>
+        
+        <input type="submit" value="Insert Supplier">
+    </form>
+
+    <form action="/irSuppliers">
+        <button>
+            Watch Suppliers
+        </button>
+    </form>
+</body>
+</html>

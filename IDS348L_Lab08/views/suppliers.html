@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Suppliers</title>
+    <style>
+        .supplier-box {
+            background-color: blue;
+            color: white;
+            padding: 20px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Suppliers</h1>
+    <div id="supplier-container">
+        <!-- Loop through and display suppliers here -->
+        <% suppliers.forEach(supplier => { %>
+            <div class="supplier-box">
+                <h2><%= supplier.SupplierName %></h2>
+                <p>Contact: <%= supplier.ContactName %></p>
+                <!-- Add more details as needed -->
+            </div>
+        <% }); %>
+    </div>
+    <script>
+        let page = 1;
+
+        function loadMore() {
+            fetch(`/load-more-suppliers?page=${page}`)
+                .then(response => response.json())
+                .then(data => {
+                    const supplierContainer = document.getElementById('supplier-container');
+                    data.suppliers.forEach(supplier => {
+                        const supplierBox = document.createElement('div');
+                        supplierBox.classList.add('supplier-box');
+                        supplierBox.innerHTML = `
+                            <h2>${supplier.SupplierName}</h2>
+                            <p>Contact: ${supplier.ContactName}</p>
+                            <!-- Add more details as needed -->
+                        `;
+                        supplierContainer.appendChild(supplierBox);
+                    });
+                    page++;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        // Detect the scroll and load more data when necessary
+        window.addEventListener('scroll', () => {
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100) {
+                loadMore();
+            }
+        });
+
+        // Load initial data
+        loadMore();
+    </script>
+</body>
+</html>
