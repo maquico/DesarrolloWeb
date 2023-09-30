@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message App</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js"></script>
+</head>
+<body>
+    
+    <header>
+        <h1>Message App</h1>
+        <button id="loginButton">Login</button>
+        <button id="registerButton">Register</button>
+    </header>
+
+
+<!-- Rest of your HTML code -->
+    <main>
+        <section id="messageSection">
+            <h2>All Messages</h2>
+            <ul id="messageList"></ul>
+        </section>
+        <section id="addMessageSection">
+            <h2>Add Message</h2>
+            <button id="addButton">Add Message</button>
+        </section>
+    </main>
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Login</h2>
+            <label for="username">Username:</label>
+            <input type="text" id="username" placeholder="Enter your username">
+            <label for="password">Password:</label>
+            <input type="password" id="password" placeholder="Enter your password">
+            <button id="loginSubmit">Submit</button>
+        </div>
+    </div>
+    <!-- Add the registration modal -->
+<div id="registerModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="registerCloseButton">&times;</span>
+        <h2>Register</h2>
+        <form id="registerForm">
+            <label for="registerUsername">Username:</label>
+            <input type="text" id="registerUsername" placeholder="Enter your username">
+            <label for="registerPassword">Password:</label>
+            <input type="password" id="registerPassword" placeholder="Enter your password">
+            <button type="button" id="registerSubmitButton">Register</button>
+        </form>
+    </div>
+</div>
+    <script src="app.js"></script>
+</body>
+</html>
